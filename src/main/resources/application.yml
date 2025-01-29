@@ -3,7 +3,7 @@ spring:
     name: tenpo
 
   r2dbc:
-    url: r2dbc:postgresql://localhost:54320/tenpo_db
+    url: r2dbc:postgresql://postgres:54320/tenpo_db
     username: user
     password: password
   sql:
