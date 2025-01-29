@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,7 +37,7 @@ public class CalculatorController {
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
-    public Mono<ResponseEntity<Double>> calculate(@RequestParam double num1, @RequestParam double num2) {
+    public Mono<ResponseEntity<Double>> calculate(@RequestParam double num1,@RequestParam double num2) {
         return rateLimitingService.tryConsume().flatMap(consumed -> {
             if (consumed) {
                 return calculatorService.calculateWithDynamicPercentage(num1, num2)

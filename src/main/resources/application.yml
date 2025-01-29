@@ -10,9 +10,18 @@ spring:
     init:
       mode: always
 
-  threads:
-    virtual:
-      enabled: true
+  data:
+    redis:
+      port: 6379
+      host: redis
+  cache:
+    type: redis
+    redis:
+      host: redis
+      port: 6379
+      password: ''
+      database: 0
+      time-to-live: 1800s
 
 resilience4j.retry:
   instances:
