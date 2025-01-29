@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: tenpo
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:54320/tenpo_db
+    username: user
+    password: password
+  sql:
+    init:
+      mode: always
+
+  threads:
+    virtual:
+      enabled: true
+
+resilience4j.retry:
+  instances:
+    externalPercentageServiceRetry:
+      maxAttempts: 3
+      waitDuration: 1000ms
+      enableExponentialBackoff: false
+
+
+springdoc:
+  swagger-ui:
+    enabled: true
+
+
